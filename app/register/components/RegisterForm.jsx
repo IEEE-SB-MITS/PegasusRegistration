@@ -53,6 +53,7 @@ const RegisterForm = () => {
 
   const [teamMembers, setTeamMembers] = useState([]);
   const [showMemberOverlay, setShowMemberOverlay] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [abstractFile, setAbstractFile] = useState(null);
 
   const handleTeamDataChange = (e) => {
@@ -94,6 +95,7 @@ const RegisterForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
 
     if (!abstractFile) {
@@ -122,11 +124,11 @@ const RegisterForm = () => {
       ticketNumber: ticketNumber,
     };
 
-    console.log(fullTeamData);
     const userId = await addData(fullTeamData);
     if (userId) {
       localStorage.setItem("userId", userId);
       alert("Success!");
+      setLoading(false);
       router.push("/ticket");
     } else {
       alert("Failed to register. Please try again.");
@@ -367,8 +369,8 @@ const RegisterForm = () => {
             style={{
               boxShadow: "2px 2px 0px rgba(255, 255, 255, 0.7)",
             }}
-          >
-            Register Team
+            >
+              {loading ? "Registering..." : "Register Team"}
           </button>
         </div>
       </form>
