@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Loader2 } from 'lucide-react';
 import peg from '@/app/assets/peg.png'
+import PunchCircles from "./component/PunchCircles";
 
 const Ticket = () => {
   const [userDetails, setUserDetails] = useState(null);
@@ -108,6 +109,11 @@ const Ticket = () => {
               </div>
             </div>
           </div>
+
+
+
+        <PunchCircles/>
+
         </div>
       </div>
     </div>
