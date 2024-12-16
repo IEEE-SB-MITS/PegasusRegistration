@@ -37,6 +37,7 @@ const RegisterForm = () => {
     teamName: "",
     teamIdeaTitle: "",
     abstractPdfUrl: "",
+    status: "pending",
   });
 
   const [teamLeader, setTeamLeader] = useState({
