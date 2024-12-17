@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
-import {app} from "@/utils/firebaseConfig";
+import app from "@/utils/firebaseConfig";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Loader2 } from 'lucide-react';
@@ -65,15 +65,15 @@ const Ticket = () => {
 
   return (
     <div className="min-h-screen bg-black py-12 px-4 sm:px-6 lg:px-8 font-pressstart flex  justify-center items-center">
-      <div className="max-w-6xl mx-auto w-full">
-        <div className="bg-white border-4 border-[#d71015] shadow-lg rounded-none overflow-hidden">
+      <div className="max-w-6xl relative mx-auto w-full">
+        <div className="bg-white border-4  shadow-lg rounded-none overflow-hidden">
           <div className="bg-black text-white py-4 px-6 border-b-4 border-[#d71015]">
             <h1 className="text-2xl font-bold text-center">PEGASUS EVENT TICKET</h1>
           </div>
           
           <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="md:border-r-2 border-dashed border-black">
-              <div className="bg-black rounded-xl w-full h-full relative p-4 flex flex-col justify-center items-center">
+            <div className="md:border-r-2 border-dashed border-black flex justify-center items-center">
+              <div className="bg-black rounded-xl w-4/5 h-4/5 relative p-4 flex flex-col justify-center items-center">
                 <Image src={peg} alt="pegasus" width={300} height={300} className="object-contain mx-auto" />
                 <h2 className="absolute right-3 bottom-3 text-white text-md">JAN 10</h2>
               </div>
@@ -103,7 +103,7 @@ const Ticket = () => {
               </div>
               
               <div className="mt-4 text-center">
-                <span className={`${userDetails.status === 'confirmed' ? 'bg-green-500' : 'bg-red-500'} text-white text-xs px-2 py-1 rounded-full`}>
+                <span className={`${userDetails.status === 'confirmed' ? 'bg-green-500' : 'bg-red-500'} text-white text-xs px-3 py-2 rounded-full`}>
                   {userDetails.status || 'PENDING'}
                 </span>
               </div>
@@ -128,4 +128,3 @@ const InfoItem = ({ label, value }) => (
 );
 
 export default Ticket;
-
