@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
-import app from "@/utils/firebaseConfig";
+import {app} from "@/utils/firebaseConfig";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Loader2 } from 'lucide-react';
