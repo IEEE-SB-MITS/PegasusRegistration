@@ -27,7 +27,7 @@ export default function Guidelines() {
           {/* Theme */}
           <section className="rounded-lg md:px-6 py-4">
             <h2 className="text-xl text-start font-semibold mb-4  text-[#d71015] ">
-              Theme: Assistive Technology and Innovation
+              Theme: Inclusive Technology and Innovation
             </h2>
             <p className="text-[#E2DCD0] text-base">
               This is only the first round. Specific problem statements will be provided in the final hackathon.
