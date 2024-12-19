@@ -148,7 +148,7 @@ const RegisterForm = () => {
             name="fname"
             value={data.fname}
             onChange={onChange}
-            className="w-full p-2 bg-transparent border border-[#666262] rounded text-[#E2DCD0]"
+            className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0]"
             required
           />
         </div>
@@ -161,7 +161,7 @@ const RegisterForm = () => {
             name="lname"
             value={data.lname}
             onChange={onChange}
-            className="w-full p-2 bg-transparent border border-[#666262] rounded text-[#E2DCD0]"
+            className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0]"
             required
           />
         </div>
@@ -174,7 +174,7 @@ const RegisterForm = () => {
             name="phone"
             value={data.phone}
             onChange={onChange}
-            className="w-full p-2 bg-transparent border border-[#666262] rounded text-[#E2DCD0]"
+            className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0]"
             pattern="^\d{10}$"
             title="Phone number must be exactly 10 digits."
             required
@@ -189,7 +189,7 @@ const RegisterForm = () => {
             name="email"
             value={data.email}
             onChange={onChange}
-            className="w-full p-2 bg-transparent border border-[#666262] rounded text-[#E2DCD0]"
+            className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0]"
             required
           />
         </div>
@@ -202,7 +202,7 @@ const RegisterForm = () => {
             name="clg"
             value={data.clg}
             onChange={onChange}
-            className="w-full p-2 bg-transparent border border-[#666262] rounded text-[#E2DCD0]"
+            className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0]"
             required
           />
         </div>
@@ -215,7 +215,7 @@ const RegisterForm = () => {
             name="branch"
             value={data.branch}
             onChange={onChange}
-            className="w-full p-2 bg-transparent border border-[#666262] rounded text-[#E2DCD0]"
+            className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0]"
             required
           />
         </div>
@@ -284,7 +284,7 @@ const RegisterForm = () => {
             name="ieeeID"
             value={data.ieeeID}
             onChange={onChange}
-            className="w-full p-2 bg-transparent border border-[#666262] rounded text-[#E2DCD0]"
+            className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0]"
             required
           />
         </div>
@@ -309,7 +309,7 @@ const RegisterForm = () => {
                 name="teamName"
                 value={teamData.teamName}
                 onChange={handleTeamDataChange}
-                className="w-full p-2 bg-transparent border border-[#666262] rounded text-[#E2DCD0]"
+                className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0]"
                 required
               />
             </div>
@@ -322,7 +322,7 @@ const RegisterForm = () => {
                 name="teamIdeaTitle"
                 value={teamData.teamIdeaTitle}
                 onChange={handleTeamDataChange}
-                className="w-full p-2 bg-transparent border border-[#666262] rounded text-[#E2DCD0]"
+                className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0]"
                 required
               />
             </div>
@@ -335,7 +335,7 @@ const RegisterForm = () => {
               type="file"
               accept=".pdf"
               onChange={handleAbstractUpload}
-              className="w-full p-2 bg-transparent border border-[#666262] rounded text-[#E2DCD0]"
+              className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0]"
               required
             />
           </div>

@@ -72,7 +72,7 @@ const LoginPage = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 p-2 rounded-md text-white hover:bg-blue-500 disabled:bg-blue-400"
+            className="w-full bg-blue-600 p-2 rounded-md text-white hover:bg-blue-500 disabled:bg-blue-400 "
           >
             {loading ? "Logging in..." : "Login"}
           </button>
