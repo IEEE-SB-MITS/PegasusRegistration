@@ -113,7 +113,10 @@ export default function Guidelines() {
         </div>
 
         {/* Agree Checkbox and Button */}
-        <div className="mt-8 flex flex-col items-center">
+        <div className="flex flex-col items-center">
+          <label htmlFor="agree" className="text-[#d71015] text-base py-10 md:px-6 font-medium">
+          * By submitting this form, you consent to the use of the collected data for communication purposes and acknowledge that it may be shared with relevant third parties for purposes associated with the event.
+          </label>
           <div className="flex items-center space-x-2">
             <input
               type="checkbox"
@@ -122,6 +125,7 @@ export default function Guidelines() {
               onChange={() => setAgreed(!agreed)}
               className="w-5 h-5 text-[#d71015] bg-gray-900 border-gray-700 rounded focus:ring-[#d71015]"
             />
+            
             <label htmlFor="agree" className="text-[#E2DCD0] text-base">
               I have read and agree to the guidelines.
             </label>
