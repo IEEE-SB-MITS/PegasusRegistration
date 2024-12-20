@@ -109,6 +109,7 @@ export default function Guidelines() {
              <a  href="https://docs.google.com/presentation/d/1WmTCyeby1MXNkEXdFFN79cqkVphZWHEObXFkelN-flE/edit?usp=sharing">
              Download Template
             </a>
+            </button>
           </section>
         </div>
 
