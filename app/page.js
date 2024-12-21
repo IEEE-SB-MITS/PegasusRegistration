@@ -106,7 +106,7 @@ export default function Guidelines() {
               rel="noopener noreferrer"
               className="cursor-pointer text-white font-bold text-[14px] px-5 h-[3em] text-center bg-[#d71015] rounded-3xl active:scale-90 transition-all duration-300  ease-in-out"
             >
-             <a  href="https://docs.google.com/presentation/d/1WmTCyeby1MXNkEXdFFN79cqkVphZWHEObXFkelN-flE/edit?usp=sharing">
+             <a  href="https://docs.google.com/presentation/d/1IhTA9tm0pbXhKs6XwfbZoFKESNgZ7jkPCbQ5c8uy0EU/edit?usp=sharing">
              Download Template
             </a>
             </button>
