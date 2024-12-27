@@ -4,12 +4,15 @@ import { db } from "@/utils/firebaseConfig";
 import { collection, getDocs, deleteDoc, updateDoc, doc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import DialogBox from "./DialogBox";
 
 const AdminPanel = () => {
   const [registrations, setRegistrations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [user, setUser] = useState(null);
+  const [isDialogOpen, setDialogOpen] = useState(false);
+  const [selectedMember, setSelectedMember] = useState(null);
   const router = useRouter();
 
   const auth = getAuth();
@@ -75,6 +78,11 @@ const AdminPanel = () => {
     registration.teamName.toLowerCase().includes(search.toLowerCase())
   );
 
+  const DialogOpen = (member) =>{
+    setDialogOpen(true);
+    setSelectedMember(member);
+  }
+
   return (
     <div className="min-h-screen p-4 bg-[#111111] text-white">
       <h1 className="text-2xl md:text-3xl font-bold mb-6 text-red-500">Admin Panel - Team Registrations</h1>
@@ -96,26 +104,49 @@ const AdminPanel = () => {
           <table className="w-full table-auto border-collapse border border-white-800">
             <thead>
               <tr className="bg-white-900">
+              <th className="border border-white-800 text-red-500 p-2 text-left">Ticket Number</th>
                 <th className="border border-white-800 text-red-500 p-2 text-left">Team Name</th>
                 <th className="border border-white-800 text-red-500 p-2 text-left">Idea Title</th>
-                <th className="border border-white-800 text-red-500 p-2 text-left">Leader Name</th>
-                <th className="border border-white-800 text-red-500 p-2 text-left">Members</th>
+                <th className="border border-white-800 text-red-500 p-2 text-left">Team Leader</th>
+                <th className="border border-white-800 text-red-500 p-2 text-left">Team Members</th>
                 <th className="border border-white-800 text-red-500 p-2 text-left">Phone Number</th>
                 <th className="border border-white-800 text-red-500 p-2 text-left">Abstract</th>
+                <th className="border border-white-800 text-red-500 p-2 text-left">Status</th>
                 <th className="border border-white-800 text-red-500 p-2 text-left">Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredRegistrations.map((registration) => (
                 <tr key={registration.id} className="hover:bg-white-900">
+                  <td className="border border-white-800 p-2">{registration.ticketNumber}</td>
                   <td className="border border-white-800 p-2">{registration.teamName}</td>
                   <td className="border border-white-800 p-2">{registration.teamIdeaTitle}</td>
-                  <td className="border border-white-800 p-2">
-                    {registration.teamLeader.fname} {registration.teamLeader.lname}
+                  <td className="border border-white-800 p-2 hover:bg-red-600  cursor-pointer capitalize"
+                    onClick={()=> DialogOpen(registration.teamLeader)}>
+                    {registration.teamLeader.fname.toLowerCase()} {registration.teamLeader.lname}
                   </td>
-                  <td className="border border-white-800 p-2">
-                    {registration.teamMembers.length} members
+                  <td className="border border-white-800 p-0">
+                    {registration.teamMembers && registration.teamMembers.length > 0 ? (
+                      <table className="w-full">
+                        <tbody>
+                          {registration.teamMembers.map((member, index) => (
+                            <tr
+                              key={index}
+                              className="hover:bg-red-600 cursor-pointer capitalize"
+                              onClick={() =>DialogOpen(member)}
+                            >
+                              <td className="p-2 border-b border-white-800">
+                                {member.fname.toLowerCase()} {member.lname.toLowerCase()}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    ) : (
+                      <div className="text-gray-400 italic">No members</div>
+                    )}
                   </td>
+
                   <td className="border border-white-800 p-2">
                     {registration.teamLeader.phone}
                   </td>
@@ -129,6 +160,7 @@ const AdminPanel = () => {
                       View Abstract
                     </a>
                   </td>
+                  <td className="border border-white-800 p-2 text-gray-400 italic">{registration.status}</td>
                   <td className="border border-white-800 p-2">
                     <div className="flex flex-col space-y-2">
                       <button
@@ -153,6 +185,8 @@ const AdminPanel = () => {
       ) : (
         <p className="text-center">No registrations found.</p>
       )}
+
+      {isDialogOpen && <DialogBox setDialogOpen={setDialogOpen} member={selectedMember} setSelectedMember={setSelectedMember}/>}
     </div>
   );
 };
