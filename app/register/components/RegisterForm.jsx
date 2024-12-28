@@ -2,7 +2,7 @@
 import { db, storage } from '@/utils/firebaseConfig.js';
 import { collection, addDoc, getDocs, query, where } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
 import MemberOverlay from './MemberOverlay';
 import Link from 'next/link';
@@ -56,6 +56,43 @@ const RegisterForm = () => {
   const [showMemberOverlay, setShowMemberOverlay] = useState(false);
   const [loading, setLoading] = useState(false);
   const [abstractFile, setAbstractFile] = useState(null);
+  const [isUnique, setIsUnique] = useState(true);
+  const [typingTimeout, setTypingTimeout] = useState(null);
+
+  //unique team leader
+  const checkUniqueness = async (email) => {
+    if (!email) {
+      setIsUnique(true);
+      return;
+    }
+    const q = query(
+      collection(db, "pegasus_registrations"),
+      where("teamLeader.email", "==", email)
+    );
+    const querySnapshot = await getDocs(q);
+    const isUniqueResult = querySnapshot.empty;
+    setIsUnique(isUniqueResult);
+
+    if (!isUniqueResult) {
+      alert("Team Lead already registered.");
+    }
+  };
+
+  useEffect(() => {
+    if (typingTimeout) {
+      clearTimeout(typingTimeout); 
+    }
+
+    const timeout = setTimeout(() => {
+      checkUniqueness(teamLeader.email);
+    }, 500); // Debounce: Wait 500ms after typing stops
+
+    setTypingTimeout(timeout);
+
+    return () => clearTimeout(timeout); 
+  }, [teamLeader]);
+
+
 
   const handleTeamDataChange = (e) => {
     const { name, value } = e.target;
@@ -329,7 +366,7 @@ const RegisterForm = () => {
           </div>
           <div className="mt-4">
             <label className="block text-[#E2DCD0] mb-2">
-              Abstract (PDF)<span className="text-red-600">*</span>
+              Abstract (PPT)<span className="text-red-600">*</span>
             </label>
             <input
               type="file"

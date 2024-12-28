@@ -5,6 +5,7 @@ import { collection, getDocs, deleteDoc, updateDoc, doc } from "firebase/firesto
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import DialogBox from "./DialogBox";
+import exportToExcel from "./exportToExcel";
 
 const AdminPanel = () => {
   const [registrations, setRegistrations] = useState([]);
@@ -85,7 +86,26 @@ const AdminPanel = () => {
 
   return (
     <div className="min-h-screen p-4 bg-[#111111] text-white">
-      <h1 className="text-2xl md:text-3xl font-bold mb-6 text-red-500">Admin Panel - Team Registrations</h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl md:text-3xl font-bold text-red-500">Admin Panel - Team Registrations</h1>
+        <div className="flex gap-5 justify-center items-center">
+          <div className="">
+            <button
+              onClick={() => exportToExcel(registrations)}
+              className="px-4 py-2 bg-green-700 rounded-lg text-white font-semibold hover:bg-green-800 transition duration-300"
+            >
+              Export to Excel
+            </button>
+          </div>
+          <div className="bg-red-700 px-4 py-2 rounded-lg shadow-lg">
+            <p className="text-lg font-semibold text-white">
+              Total Registrations: <span className="">{registrations.length}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
 
       <div className="mb-6">
         <input
@@ -107,6 +127,7 @@ const AdminPanel = () => {
               <th className="border border-white-800 text-red-500 p-2 text-left">Ticket Number</th>
                 <th className="border border-white-800 text-red-500 p-2 text-left">Team Name</th>
                 <th className="border border-white-800 text-red-500 p-2 text-left">Idea Title</th>
+                <th className="border border-white-800 text-red-500 p-2 text-left">College Name</th>
                 <th className="border border-white-800 text-red-500 p-2 text-left">Team Leader</th>
                 <th className="border border-white-800 text-red-500 p-2 text-left">Team Members</th>
                 <th className="border border-white-800 text-red-500 p-2 text-left">Phone Number</th>
@@ -121,6 +142,7 @@ const AdminPanel = () => {
                   <td className="border border-white-800 p-2">{registration.ticketNumber}</td>
                   <td className="border border-white-800 p-2">{registration.teamName}</td>
                   <td className="border border-white-800 p-2">{registration.teamIdeaTitle}</td>
+                  <td className="border border-white-800 p-2 capitalize">{registration.teamLeader.clg.toLowerCase()}</td>
                   <td className="border border-white-800 p-2 hover:bg-red-600  cursor-pointer capitalize"
                     onClick={()=> DialogOpen(registration.teamLeader)}>
                     {registration.teamLeader.fname.toLowerCase()} {registration.teamLeader.lname}
@@ -160,7 +182,7 @@ const AdminPanel = () => {
                       View Abstract
                     </a>
                   </td>
-                  <td className="border border-white-800 p-2 text-gray-400 italic">{registration.status}</td>
+                  <td className={`border border-white-800 p-2 ${registration.status === "pending"? 'text-gray-400': 'text-green-400'} italic`}>{registration.status}</td>
                   <td className="border border-white-800 p-2">
                     <div className="flex flex-col space-y-2">
                       <button
