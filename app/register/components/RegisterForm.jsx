@@ -112,12 +112,27 @@ const RegisterForm = () => {
 
   const handleAbstractUpload = (e) => {
     const file = e.target.files[0];
-    if (file && file.type === "application/pdf") {
+    const allowedTypes = [
+      "application/pdf",
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation", // .pptx
+      "application/vnd.ms-powerpoint", // .ppt
+      // "application/msword", // .doc
+      // "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .docx
+      // "application/vnd.ms-excel", // .xls
+      // "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // .xlsx
+      // "text/plain", // .txt
+      // "application/vnd.oasis.opendocument.text", // .odt
+      // "application/vnd.oasis.opendocument.presentation", // .odp
+      // "application/vnd.oasis.opendocument.spreadsheet", // .ods
+    ];
+  
+    if (file && allowedTypes.includes(file.type)) {
       setAbstractFile(file);
     } else {
-      alert("Please upload a PDF file.");
+      alert("Please upload a file in the supported formats (PDF, PPTX, DOCX, etc.).");
     }
   };
+  
 
   const addTeamMember = (member) => {
     if (teamMembers.length < 3) {
@@ -370,7 +385,8 @@ const RegisterForm = () => {
             </label>
             <input
               type="file"
-              accept=".pdf"
+              accept=".pdf,.ppt,.pptx"
+              multiple 
               onChange={handleAbstractUpload}
               className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0]"
               required
