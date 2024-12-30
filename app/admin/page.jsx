@@ -127,16 +127,16 @@ const AdminPanel = () => {
           <table className="w-full table-auto border-collapse border border-white-800">
             <thead>
               <tr className="bg-white-900">
-              <th className="border border-white-800 text-red-500 p-2 text-left">Ticket Number</th>
-                <th className="border border-white-800 text-red-500 p-2 text-left">Team Name</th>
-                <th className="border border-white-800 text-red-500 p-2 text-left">Idea Title</th>
-                <th className="border border-white-800 text-red-500 p-2 text-left">College Name</th>
-                <th className="border border-white-800 text-red-500 p-2 text-left">Team Leader</th>
-                <th className="border border-white-800 text-red-500 p-2 text-left">Team Members</th>
-                <th className="border border-white-800 text-red-500 p-2 text-left">Phone Number</th>
-                <th className="border border-white-800 text-red-500 p-2 text-left">Abstract</th>
-                <th className="border border-white-800 text-red-500 p-2 text-left">Status</th>
-                <th className="border border-white-800 text-red-500 p-2 text-left">Actions</th>
+              <th className="border border-white-800 text-red-500 p-2 text-center">Ticket Number</th>
+                <th className="border border-white-800 text-red-500 p-2 text-center">Team Name</th>
+                <th className="border border-white-800 text-red-500 p-2 text-center">Idea Title</th>
+                <th className="border border-white-800 text-red-500 p-2 text-center">College Name</th>
+                <th className="border border-white-800 text-red-500 p-2 text-center">Team Leader</th>
+                <th className="border border-white-800 text-red-500 p-2 text-center">Team Members</th>
+                <th className="border border-white-800 text-red-500 p-2 text-center">Phone Number<span className="block text-sm text-white font-light">(click to call)</span></th>
+                <th className="border border-white-800 text-red-500 p-2 text-center">Abstract</th>
+                <th className="border border-white-800 text-red-500 p-2 text-center">Status</th>
+                <th className="border border-white-800 text-red-500 p-2 text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -172,8 +172,8 @@ const AdminPanel = () => {
                     )}
                   </td>
 
-                  <td className="border border-white-800 p-2">
-                    {registration.teamLeader.phone}
+                  <td className="border border-white-800 p-2 ">
+                      <a href={`tel:${registration.teamLeader.phone}`}>{registration.teamLeader.phone}</a>
                   </td>
                   <td className="border border-white-800 p-2">
                     <a

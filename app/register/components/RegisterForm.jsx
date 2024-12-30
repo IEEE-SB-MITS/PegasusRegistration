@@ -371,7 +371,7 @@ const RegisterForm = () => {
               accept=".pdf,.ppt,.pptx"
               multiple 
               onChange={handleAbstractUpload}
-              className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0]"
+              className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0] w-full"
               required
             />
           </div>
