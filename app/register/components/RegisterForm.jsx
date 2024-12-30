@@ -61,37 +61,13 @@ const RegisterForm = () => {
 
   //unique team leader
   const checkUniqueness = async (email) => {
-    if (!email) {
-      setIsUnique(true);
-      return;
-    }
     const q = query(
       collection(db, "pegasus_registrations"),
       where("teamLeader.email", "==", email)
     );
     const querySnapshot = await getDocs(q);
-    const isUniqueResult = querySnapshot.empty;
-    setIsUnique(isUniqueResult);
-
-    if (!isUniqueResult) {
-      alert("Team Lead already registered.");
-    }
+    return querySnapshot.empty;
   };
-
-  useEffect(() => {
-    if (typingTimeout) {
-      clearTimeout(typingTimeout); 
-    }
-
-    const timeout = setTimeout(() => {
-      checkUniqueness(teamLeader.email);
-    }, 500); // Debounce: Wait 500ms after typing stops
-
-    setTypingTimeout(timeout);
-
-    return () => clearTimeout(timeout); 
-  }, [teamLeader]);
-
 
 
   const handleTeamDataChange = (e) => {
@@ -153,6 +129,13 @@ const RegisterForm = () => {
 
     if (!abstractFile) {
       alert("Please upload an abstract PDF.");
+      return;
+    }
+
+    const isUniqueLeader = await checkUniqueness(teamLeader.email);
+    if (!isUniqueLeader) {
+      alert("Team Lead already registered");
+      setLoading(false);
       return;
     }
 

@@ -26,7 +26,8 @@ const AdminPanel = () => {
         id: doc.id,
         ...doc.data(),
       }));
-      setRegistrations(data);
+      const sortedData = data.sort((a, b) => a.teamName.localeCompare(b.teamName));
+      setRegistrations(sortedData);
     } catch (error) {
       console.error("Error fetching registrations: ", error);
     } finally {
