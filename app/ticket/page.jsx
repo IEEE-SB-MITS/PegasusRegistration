@@ -104,7 +104,7 @@ const Ticket = () => {
               
               <div className="mt-4 text-center">
                 <span className={`${userDetails.status === 'confirmed' ? 'bg-green-500' : 'bg-red-500'} text-white text-xs px-3 py-2 rounded-full`}>
-                  {userDetails.status || 'PENDING'}
+                  {userDetails.status=='confirmed'?'Shortlisted':'PENDING'}
                 </span>
               </div>
             </div>

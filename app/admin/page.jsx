@@ -87,7 +87,7 @@ const AdminPanel = () => {
 
   return (
     <div className="min-h-screen p-4 bg-[#111111] text-white">
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex justify-between items-center mb-6 md:flex-row flex-col gap-5 text-center">
         <h1 className="text-2xl md:text-3xl font-bold text-red-500">Admin Panel - Team Registrations</h1>
         <div className="flex gap-5 justify-center items-center">
           <div className="">
@@ -98,23 +98,25 @@ const AdminPanel = () => {
               Export to Excel
             </button>
           </div>
-          <div className="bg-red-700 px-4 py-2 rounded-lg shadow-lg">
+          <div className="bg-red-700 text-center py-2 px-2 rounded-lg shadow-lg">
             <p className="text-lg font-semibold text-white">
-              Total Registrations: <span className="">{registrations.length}</span>
+              Count : <span className="">{registrations.length}</span>
             </p>
           </div>
         </div>
+      <span className="animate-bounce py-2 px-2 underline">Tap each participant to view more</span>
       </div>
 
 
 
       <div className="mb-6">
+        
         <input
           type="text"
           placeholder="Search by team name..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="p-2 w-full border border-red-700 rounded bg-red-900 text-white focus:outline-none focus:border-red-500"
+          className="p-2 w-full   rounded bg-white/70 text-black focus:outline-none focus:border-white focus:shadow-white placeholder-black"
         />
       </div>
 
@@ -196,7 +198,7 @@ const AdminPanel = () => {
                         onClick={() => handleConfirm(registration.id)}
                         className="px-3 py-1 bg-green-600 rounded hover:bg-green-700 transition duration-300 text-sm"
                       >
-                        Confirm
+                        Shortlist
                       </button>
                     </div>
                   </td>
