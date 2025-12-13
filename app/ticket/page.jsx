@@ -6,7 +6,7 @@ import app from "@/utils/firebaseConfig";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Loader2 } from 'lucide-react';
-import peg from '@/app/assets/peg.png'
+import peg from '@/app/assets/peg4.png'
 import PunchCircles from "./component/PunchCircles";
 
 const Ticket = () => {
@@ -24,7 +24,7 @@ const Ticket = () => {
           return;
         }
 
-        const docRef = doc(db, "pegasus_registrations", userId);
+        const docRef = doc(db, "peg4", userId);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
@@ -66,8 +66,8 @@ const Ticket = () => {
   return (
     <div className="min-h-screen bg-black py-12 px-4 sm:px-6 lg:px-8 font-pressstart flex  justify-center items-center">
       <div className="max-w-6xl relative mx-auto w-full">
-        <div className="bg-white border-4  shadow-lg rounded-none overflow-hidden">
-          <div className="bg-black text-white py-4 px-6 border-b-4 border-[#d71015]">
+        <div className="bg-white border-4 shadow-lg rounded-none overflow-hidden">
+          <div className="text-black py-4 px-6 border-b-4 border-[#d71015]">
             <h1 className="text-2xl font-bold text-center">PEGASUS EVENT TICKET</h1>
           </div>
           
@@ -75,7 +75,7 @@ const Ticket = () => {
             <div className="md:border-r-2 border-dashed border-black flex justify-center items-center">
               <div className="bg-black rounded-xl w-4/5 h-4/5 relative p-4 flex flex-col justify-center items-center">
                 <Image src={peg} alt="pegasus" width={300} height={300} className="object-contain mx-auto" />
-                <h2 className="absolute right-3 bottom-3 text-white text-md">JAN 10</h2>
+                {/* <h2 className="absolute right-3 bottom-3 text-white text-md">JAN 10</h2> */}
               </div>
             </div>
             
@@ -88,7 +88,7 @@ const Ticket = () => {
               ))}
               <InfoItem label="LEADER PHONE NO" value={`+91 ${teamLeader.phone}`} />
               <InfoItem label="LEADER EMAIL" value={teamLeader.email} />
-              <InfoItem label="FOOD PREFERENCE" value={teamLeader.foodPref} />
+              {/* <InfoItem label="FOOD PREFERENCE" value={teamLeader.foodPref} /> */}
               
               <div className="mt-6 flex md:flex-row flex-col space-y-2 md:space-y-0 justify-between items-center">
                 <a
@@ -103,10 +103,26 @@ const Ticket = () => {
               </div>
               
               <div className="mt-4 text-center">
-                <span className={`${userDetails.status === 'confirmed' ? 'bg-green-500' : 'bg-red-500'} text-white text-xs px-3 py-2 rounded-full`}>
-                  {userDetails.status=='confirmed'?'Shortlisted':'PENDING'}
+                <span
+                  className={`
+                    text-white text-xs px-3 py-2 rounded-full
+                    ${
+                      userDetails.status === "confirmed"
+                        ? "bg-green-500"
+                        : userDetails.status === "rejected"
+                        ? "bg-red-700"
+                        : "bg-gray-500"
+                    }
+                  `}
+                >
+                  {userDetails.status === "confirmed"
+                    ? "Shortlisted"
+                    : userDetails.status === "rejected"
+                    ? "Rejected"
+                    : "Pending"}
                 </span>
               </div>
+
             </div>
           </div>
 

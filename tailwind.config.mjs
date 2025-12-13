@@ -58,7 +58,8 @@ export default {
   			ProductSans: [
   				'ProductSans',
   				'sans-serif'
-  			]
+  			],
+			ITCMedium: ['ITCMedium', 'sans-serif']
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

@@ -1,5 +1,5 @@
 import React from 'react';
-import peg from '@/app/assets/peg.png'
+import peg from '@/app/assets/peg4.png'
 import Image from 'next/image'
 
 const Hero = () => {

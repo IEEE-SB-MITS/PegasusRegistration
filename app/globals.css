@@ -29,6 +29,14 @@ body {
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'ITCMedium';
+  src: url('./fonts/ITCMedium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 
 @layer base {
   :root {

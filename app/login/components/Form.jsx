@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 import app from '@/utils/firebaseConfig'; // Ensure this path is correct
+import Link from 'next/link';
 
 const LoginPage = () => {
   const [ticketNumber, setTicketNumber] = useState('');
@@ -20,7 +21,7 @@ const LoginPage = () => {
 
     try {
       const q = query(
-        collection(db, 'pegasus_registrations'),
+        collection(db, 'peg4'),
         where('ticketNumber', '==', ticketNumber),
         where('teamLeader.email', '==', email)
       );
@@ -47,9 +48,10 @@ const LoginPage = () => {
     <div className="min-h-screen w-full md:w-3/4 mx-auto flex items-center justify-center bg-[#070707] px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8 p-6 sm:p-10 rounded-xl shadow-lg flex flex-col justify-center items-center">
         <div>
-          <h2 className="mt-6 text-center text-3xl sm:text-4xl font-extrabold text-[#D71015] mb-6">
+          <h2 className="mt-6 text-center text-3xl sm:text-4xl font-extrabold text-[#D71015] mb-2">
             Login to Pegasus
           </h2>
+          <p className='text-center text-white'>don't have a ticket? <Link href='/register' className='text-[#D71015]'>Register</Link></p>
         </div>
         <form className="mt-8 space-y-6 flex flex-col justify-center items-center w-full" onSubmit={handleLogin}>
           <div className="rounded-md shadow-sm -space-y-px w-full">
@@ -94,10 +96,10 @@ const LoginPage = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="relative px-8 sm:px-14 py-3 font-bold text-[#E2DCD0] group bg-[#D71015] rounded-xl hover:bg-[#B40E13] transition-all duration-300 ease-in-out w-full sm:w-auto"
-              style={{
-                boxShadow: "2px 2px 0px rgba(255, 255, 255, 0.7)",
-              }}
+              className="relative px-8 sm:px-14 py-3 font-bold text-[#E2DCD0] group bg-[#D71015] rounded-lg hover:bg-[#B40E13] transition-all duration-300 ease-in-out w-full sm:w-auto"
+              // style={{
+              //   boxShadow: "2px 2px 0px rgba(255, 255, 255, 0.7)",
+              // }}
             >
               <span className="relative text-xl sm:text-2xl">{isLoading ? 'Logging in...' : 'Log in'}</span>
             </button>

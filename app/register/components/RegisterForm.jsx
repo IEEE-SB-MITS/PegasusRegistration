@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import MemberOverlay from './MemberOverlay';
 import Link from 'next/link';
 import MemberPreview from './MemberPreview';
+import { uploadToCloudinaryUnsigned } from '@/utils/cloudinary';
 
 function generateTC() {
   const ticketNumber = Math.floor(100000 + Math.random() * 900000);
@@ -14,14 +15,14 @@ function generateTC() {
 }
 
 async function isTCUnique(ticketNumber) {
-  const q = query(collection(db, "pegasus_registrations"), where("ticketNumber", "==", ticketNumber));
+  const q = query(collection(db, "peg4"), where("ticketNumber", "==", ticketNumber));
   const querySnapshot = await getDocs(q);
   return querySnapshot.empty;
 }
 
 async function addData(formData) {
   try {
-    const docRef = await addDoc(collection(db, "pegasus_registrations"), formData);
+    const docRef = await addDoc(collection(db, "peg4"), formData);
     console.log("Document written: ", docRef.id);
     return docRef.id;
   } catch (error) {
@@ -62,7 +63,7 @@ const RegisterForm = () => {
   //unique team leader
   const checkUniqueness = async (email) => {
     const q = query(
-      collection(db, "pegasus_registrations"),
+      collection(db, "peg4"),
       where("teamLeader.email", "==", email)
     );
     const querySnapshot = await getDocs(q);
@@ -89,7 +90,7 @@ const RegisterForm = () => {
   const handleAbstractUpload = (e) => {
     const file = e.target.files[0];
     const allowedTypes = [
-      "application/pdf",
+      // "application/pdf",
       "application/vnd.openxmlformats-officedocument.presentationml.presentation", // .pptx
       "application/vnd.ms-powerpoint", // .ppt
       // "application/msword", // .doc
@@ -102,20 +103,21 @@ const RegisterForm = () => {
       // "application/vnd.oasis.opendocument.spreadsheet", // .ods
     ];
   
-    if (file && allowedTypes.includes(file.type)) {
+    if (file && allowedTypes.includes(file.type) && file.size <= 10 * 1024 * 1024) {
       setAbstractFile(file);
     } else {
-      alert("Please upload a file in the supported formats (PDF, PPTX, DOCX, etc.).");
+      alert("Please upload a PDF/PPT (max 10MB).");
+      e.target.value = null;
     }
   };
   
 
   const addTeamMember = (member) => {
-    if (teamMembers.length < 3) {
+    if (teamMembers.length < 4) {
       setTeamMembers([...teamMembers, member]);
       setShowMemberOverlay(false);
     } else {
-      alert("Maximum 4 team members (including leader) allowed.");
+      alert("Maximum 5 team members (including leader) allowed.");
     }
   };
 
@@ -148,9 +150,10 @@ const RegisterForm = () => {
     }
 
     // Upload abstract PDF
-    const abstractRef = ref(storage, `abstracts/${teamData.teamName}_${Date.now()}.pdf`);
-    await uploadBytes(abstractRef, abstractFile);
-    const abstractUrl = await getDownloadURL(abstractRef);
+    const abstractUrl = await uploadToCloudinaryUnsigned(abstractFile, { folder: `pegasus/abstracts` });
+    // const abstractRef = ref(storage, `abstracts/${teamData.teamName}_${Date.now()}.pdf`);
+    // await uploadBytes(abstractRef, abstractFile);
+    // const abstractUrl = await getDownloadURL(abstractRef);
 
     const fullTeamData = {
       ...teamData,
@@ -168,6 +171,7 @@ const RegisterForm = () => {
       router.push("/ticket");
     } else {
       alert("Failed to register. Please try again.");
+      setLoading(false);
     }
   };
 
@@ -368,8 +372,7 @@ const RegisterForm = () => {
             </label>
             <input
               type="file"
-              accept=".pdf,.ppt,.pptx"
-              multiple 
+              accept=".ppt,.pptx"
               onChange={handleAbstractUpload}
               className="w-fit p-2 bg-transparent border-b-2  border-[#666262] rounded text-[#E2DCD0] w-full"
               required
@@ -388,7 +391,7 @@ const RegisterForm = () => {
             <MemberPreview key={index} member={member} onRemove={() => removeTeamMember(index)} />
           ))}
           
-          {teamMembers.length < 3 && (
+          {teamMembers.length < 4 && (
             <button
               type="button"
               onClick={() => setShowMemberOverlay(true)}
@@ -402,10 +405,10 @@ const RegisterForm = () => {
         <div className='flex justify-center'>
           <button 
             type="submit" 
-            className="px-14 py-3 font-bold text-[#E2DCD0] bg-[#D71015] rounded-xl hover:bg-[#B40E13] transition-all duration-300 ease-in-out text-2xl"
-            style={{
-              boxShadow: "2px 2px 0px rgba(255, 255, 255, 0.7)",
-            }}
+            className="px-14 py-3 font-bold text-[#E2DCD0] bg-[#D71015] rounded-lg hover:bg-[#B40E13] transition-all duration-300 ease-in-out text-2xl"
+            // style={{
+            //   boxShadow: "2px 2px 0px rgba(255, 255, 255, 0.7)",
+            // }}
             >
               {loading ? "Registering..." : "Register Team"}
           </button>
