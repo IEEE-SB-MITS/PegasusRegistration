@@ -180,7 +180,7 @@ export default function Guidelines() {
               <li>Teams attempting to use pre-built hardware projects will be instantly disqualified.</li>
             </ul>
             <p className="text-[#E2DCD0] text-base mt-4">
-              For assistance, contact us at <span className="text-[#d71015] font-medium">9037002156</span>.
+              For assistance, contact us at <span className="text-[#d71015] font-medium">7907214758</span> or <span className="text-[#d71015] font-medium">9995353403</span>.
             </p>
           </section>
 
