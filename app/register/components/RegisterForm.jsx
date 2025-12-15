@@ -37,6 +37,7 @@ const RegisterForm = () => {
   const [teamData, setTeamData] = useState({
     teamName: "",
     teamIdeaTitle: "",
+    track: "",
     abstractPdfUrl: "",
     status: "pending",
   });
@@ -113,11 +114,11 @@ const RegisterForm = () => {
   
 
   const addTeamMember = (member) => {
-    if (teamMembers.length < 4) {
+    if (teamMembers.length < 3) {
       setTeamMembers([...teamMembers, member]);
       setShowMemberOverlay(false);
     } else {
-      alert("Maximum 5 team members (including leader) allowed.");
+      alert("Maximum 4 team members (including leader) allowed.");
     }
   };
 
@@ -133,6 +134,13 @@ const RegisterForm = () => {
       alert("Please upload an abstract PDF.");
       return;
     }
+
+    if (!teamData.track) {
+      alert("Please select a track");
+      setLoading(false);
+      return;
+    }
+
 
     const isUniqueLeader = await checkUniqueness(teamLeader.email);
     if (!isUniqueLeader) {
@@ -366,6 +374,57 @@ const RegisterForm = () => {
               />
             </div>
           </div>
+
+          {/* ================= TRACK SELECTION ================= */}
+          <div className="my-8">
+            <label className="block text-[#E2DCD0] mb-3 font-medium">
+              Choose Track <span className="text-red-600">*</span>
+            </label>
+
+            <div className="flex flex-col md:flex-row gap-4">
+
+              {/* SOFTWARE */}
+              <button
+                type="button"
+                onClick={() => setTeamData(p => ({ ...p, track: "software" }))}
+                className={`flex-1 flex items-center justify-between px-6 py-4
+                  rounded-lg border transition-all duration-200
+                  ${
+                    teamData.track === "software"
+                      ? "border-[#D71015] bg-[#2A0F10] text-[#D71015]"
+                      : "border-[#555] bg-transparent text-[#E2DCD0] hover:border-[#888]"
+                  }`}
+              >
+                <span className="font-semibold">Software Track</span>
+                {teamData.track === "software" && (
+                  <span className="text-sm font-semibold">✓</span>
+                )}
+              </button>
+
+              {/* HARDWARE */}
+              <button
+                type="button"
+                onClick={() => setTeamData(p => ({ ...p, track: "hardware" }))}
+                className={`flex-1 flex items-center justify-between px-6 py-4
+                  rounded-lg border transition-all duration-200
+                  ${
+                    teamData.track === "hardware"
+                      ? "border-[#D71015] bg-[#2A0F10] text-[#D71015]"
+                      : "border-[#555] bg-transparent text-[#E2DCD0] hover:border-[#888]"
+                  }`}
+              >
+                <span className="font-semibold">Hardware Track</span>
+                {teamData.track === "hardware" && (
+                  <span className="text-sm font-semibold">✓</span>
+                )}
+              </button>
+
+            </div>
+
+            {/* Required hidden input */}
+            <input type="text" value={teamData.track} required readOnly className="hidden"/>
+          </div>
+
           <div className="mt-4">
             <label className="block text-[#E2DCD0] mb-2">
               Abstract (PPT)<span className="text-red-600">*</span>
@@ -391,7 +450,7 @@ const RegisterForm = () => {
             <MemberPreview key={index} member={member} onRemove={() => removeTeamMember(index)} />
           ))}
           
-          {teamMembers.length < 4 && (
+          {teamMembers.length < 3 && (
             <button
               type="button"
               onClick={() => setShowMemberOverlay(true)}

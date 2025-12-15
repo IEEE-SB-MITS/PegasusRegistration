@@ -43,7 +43,7 @@ export default function Guidelines() {
             </h2>
             <ul className="list-disc list-inside text-[#E2DCD0] text-base space-y-2">
               <li>All teams are required to submit their proposed solutions using the attached 4-slide PowerPoint template.</li>
-              <li>Team Size: Each team must consist of 2 to 5 members.</li>
+              <li>Team Size: Each team must consist of 2 to 4 members.</li>
               <li>Extra slides or modified templates result in direct disqualification.</li>
             </ul>
           </section>

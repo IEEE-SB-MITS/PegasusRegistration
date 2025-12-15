@@ -150,6 +150,9 @@ const AdminPanel = () => {
                   Team Name
                 </th>
                 <th className="border border-white-800 text-red-500 p-2 text-center">
+                  Track
+                </th>
+                <th className="border border-white-800 text-red-500 p-2 text-center">
                   Idea Title
                 </th>
                 <th className="border border-white-800 text-red-500 p-2 text-center">
@@ -188,6 +191,10 @@ const AdminPanel = () => {
 
                   <td className="border border-white-800 p-2">
                     {registration.teamName}
+                  </td>
+
+                  <td className="border border-white-800 p-2">
+                    {registration.track}
                   </td>
 
                   <td className="border border-white-800 p-2">
