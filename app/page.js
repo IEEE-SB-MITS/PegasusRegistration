@@ -17,7 +17,7 @@ export default function Guidelines() {
       {/* Container */}
       <div className="bg-[#1A1A1A] rounded-lg shadow-lg p-8 max-w-4xl w-full text-base md:text-lg">
         <h1 className="text-3xl md:text-5xl font-bold text-center mb-6 text-[#d71015] underline underline-offset-[6px] uppercase font-ITCMedium ">
-          Pegasus 4.0 First Round Guidelines
+          Pegasus 4.0 Guidelines
         </h1>
         <p className="text-[#E2DCD0]  mb-4 md:p-6">
           Welcome to the First round of Pegasus 4.0! This round is designed to shortlist the top  teams who will advance to the final hackathon. Please carefully follow the instructions below to ensure your submission meets the requirements.
@@ -42,9 +42,10 @@ export default function Guidelines() {
               Overview
             </h2>
             <ul className="list-disc list-inside text-[#E2DCD0] text-base space-y-2">
-              <li>All teams are required to submit their proposed solutions using the attached 4-slide PowerPoint template.</li>
+              <li>Open to Undergraduate (UG) and Postgraduate (PG) students.</li>
+              <li>Students from any branch or field of study can participate.</li>
+              <li>Each participant can be part of only one team.</li>
               <li>Team Size: Each team must consist of 2 to 4 members.</li>
-              <li>Extra slides or modified templates result in direct disqualification.</li>
             </ul>
           </section>
 
@@ -54,16 +55,8 @@ export default function Guidelines() {
               Submission Rules
             </h2>
             <ul className="list-disc list-inside text-[#E2DCD0] text-base space-y-2">
-              <li>
-                Template Usage: Use the attached 4-slide PowerPoint template
-                strictly. Each slide corresponds to:
-                <ul className="list-disc list-inside pl-6">
-                  <li>Slide 1: Team Details (Team Name, Members, Contact Information)</li>
-                  <li>Slide 2: Problem Understanding</li>
-                  <li>Slide 3: Proposed Solution</li>
-                  <li>Slide 4: Feasibility and Impact</li>
-                </ul>
-              </li>
+              <li>All teams must use the given 6-slide PPT template.</li>
+              <li>Extra slides result in direct disqualification.</li>
               <li>Submission Deadline: <strong className="text-[#d71015]">31 December 2025</strong>.</li>
               <li>File Naming: <code className="px-1 rounded">Team_Name.pptx</code>.</li>
             </ul>
@@ -78,78 +71,158 @@ export default function Guidelines() {
 
             {/* Software Track */}
             <div className="mb-8">
-              <h2 className="font-ITCMedium text-xl font-semibold text-[#d71015] mb-3">
-                Software Track – First Round (Idea Submission)
+              <h2 className="font-ITCMedium text-xl font-semibold text-[#d71015] mb-4">
+                Software Track
               </h2>
 
+              {/* 1. First Round */}
+              <h3 className="font-ITCMedium text-lg font-semibold text-[#d71015] mb-2">
+                1. First Round (Idea Submission)
+              </h3>
+
               <p className="text-[#E2DCD0] mb-3 text-base">
-                This round evaluates your ability to identify a real-world software problem and propose an innovative and feasible solution.
+                <strong>Objective:</strong><br />
+                This round evaluates your ability to identify a real-world software problem and
+                propose an innovative solution.
               </p>
 
-              <p className="text-[#E2DCD0] font-medium mb-2 text-base"><strong>Evaluation Criteria:</strong></p>
+              <p className="text-[#E2DCD0] font-medium mb-2 text-base">
+                <strong>Evaluation Criteria:</strong>
+              </p>
+
               <ul className="list-disc list-inside text-[#E2DCD0] space-y-2 pl-4 text-base">
                 <li>Creativity & Innovation</li>
-                <li>Relevance to Open Innovation theme</li>
-                <li>Feasibility of implementation</li>
                 <li>Problem understanding</li>
+                <li>Relevance to Open Innovation Theme</li>
+                <li>Feasibility of implementation</li>
                 <li>Impact & usefulness</li>
-                <li>Clarity of slides</li>
               </ul>
 
-              <p className="text-[#E2DCD0] text-base mt-4">
-                <strong>Note:</strong> This round is purely idea-based. Shortlisted teams will advance to the 24-hour Final Software Hackathon.
+              <p className="text-[#E2DCD0] font-medium mb-2 mt-4 text-base">
+                <strong>Important Notes:</strong>
               </p>
-              <p className="text-[#E2DCD0] text-base mt-2">
-                <strong>Final Round Theme:</strong> The specific problem statements will be revealed on the day of the hackathon.
-              </p>
-              <p className="text-[#E2DCD0] text-base mt-2">
-                <strong>Bonus Advantage:</strong> Final solutions that are hosted, deployed or demo-accessible.
-              </p>
+
+              <ul className="list-disc list-inside text-[#E2DCD0] space-y-2 pl-4 text-base">
+                <li>This round evaluates ideas only, not coding.</li>
+                <li>Shortlisted teams will proceed to the 24-hour Final Software Hackathon.</li>
+              </ul>
+
+              {/* 2. Final Round */}
+              <h3 className="font-ITCMedium text-lg font-semibold text-[#d71015] mt-6 mb-2">
+                2. Final Round Theme
+              </h3>
+
+              <ul className="list-disc list-inside text-[#E2DCD0] space-y-2 pl-4 text-base">
+                <li>The specific problem statements will be revealed on the day of the hackathon.</li>
+                <li>
+                  Bonus point: Final solutions must be hosted/deployed or provided via a
+                  demo-accessible environment.
+                </li>
+              </ul>
             </div>
+
 
             {/* Hardware Track */}
             <div>
-              <h2 className="font-ITCMedium text-xl font-semibold text-[#d71015] mb-3">
-                Hardware Track – First Round (Idea Submission)
+              <h2 className="font-ITCMedium text-xl font-semibold text-[#d71015] mb-4 mt-14">
+                Hardware Track
               </h2>
 
-              <p className="text-[#E2DCD0] text-base mb-3">
-                Participants must identify a real-world hardware problem and propose a meaningful, buildable hardware solution.
+              {/* 1. First Round */}
+              <h3 className="font-ITCMedium text-lg font-semibold text-[#d71015] mb-2">
+                1. First Round (Idea Submission)
+              </h3>
+
+              <p className="text-[#E2DCD0] mb-3 text-base">
+                <strong>Objective:</strong><br />
+                Identify a real-world hardware problem and propose a meaningful, buildable
+                hardware concept.
               </p>
 
-              <p className="text-[#E2DCD0] text-base font-medium mb-2"><strong>Evaluation Criteria:</strong></p>
-              <ul className="list-disc list-inside text-[#E2DCD0] text-base space-y-2 pl-4">
-                <li>Creativity & innovation</li>
+              <p className="text-[#E2DCD0] font-medium mb-2 text-base">
+                <strong>Evaluation Criteria:</strong>
+              </p>
+
+              <ul className="list-disc list-inside text-[#E2DCD0] space-y-2 pl-4 text-base">
+                <li>Creativity & Innovation</li>
                 <li>Clarity of problem understanding</li>
                 <li>Practical feasibility</li>
                 <li>Electronics/mechanical approach clarity</li>
                 <li>Potential impact</li>
-                <li>Realistic execution plan</li>
               </ul>
 
-              <p className="text-[#E2DCD0] text-base mt-4">
-                <strong>Final Hardware Build Round Rules:</strong>
+              {/* 2. Final Hardware Build Round */}
+              <h3 className="font-ITCMedium text-lg font-semibold text-[#d71015] mt-6 mb-2">
+                2. Final Hardware Build Round
+              </h3>
+
+              {/* 2.1 Build From Scratch */}
+              <p className="text-[#E2DCD0] font-medium mb-2 text-base">
+                <strong>1. Build From Scratch Rule</strong>
               </p>
 
-              <ul className="list-disc list-inside text-[#E2DCD0] text-base space-y-2 pl-4 mt-2">
-                <li>All hardware must be built entirely on-site from scratch.</li>
-                <li>Pre-assembled or partially assembled hardware is strictly prohibited.</li>
-                <li>No pre-soldered circuits, pre-wired boards, or pre-loaded firmware allowed.</li>
-                <li>Judges will inspect all components before the build begins.</li>
+              <p className="text-[#E2DCD0] text-base mb-2">
+                Teams must assemble and build their hardware entirely on-site.
+              </p>
+
+              <p className="text-[#E2DCD0] font-medium text-base mb-2">
+                Strictly NOT allowed:
+              </p>
+
+              <ul className="list-disc list-inside text-[#E2DCD0] space-y-2 pl-4 text-base">
+                <li>Pre-assembled or partially assembled hardware</li>
+                <li>Pre-soldered or pre-wired circuits</li>
+                <li>Pre-programmed MCUs or boards</li>
+                <li>Pre-loaded firmware</li>
               </ul>
 
-              <p className="text-[#E2DCD0] text-base mt-4 font-medium"><strong>Allowed to Bring:</strong></p>
-              <ul className="list-disc list-inside text-[#E2DCD0] text-base space-y-2 pl-4">
-                <li>Raw electronic components, sensors, modules, MCUs</li>
+              <p className="text-[#E2DCD0] text-base mt-2">
+                Pre-assembled hardware projects will be immediately disqualified. Judges will
+                inspect all components before the round starts.
+              </p>
+
+              {/* 2.2 Allowed to Bring */}
+              <p className="text-[#E2DCD0] font-medium mt-4 mb-2 text-base">
+                <strong>2. Allowed to Bring</strong>
+              </p>
+
+              <ul className="list-disc list-inside text-[#E2DCD0] space-y-2 pl-4 text-base">
+                <li>Raw electronic components</li>
+                <li>Modules, sensors, MCUs, motors, actuators</li>
                 <li>Breadboards, wires, soldering tools</li>
-                <li>Hand tools (screwdrivers, pliers, cutters)</li>
-                <li>Laptops with empty code editors or firmware templates (no prewritten code)</li>
+                <li>Hand tools (screwdrivers, cutters, pliers)</li>
+                <li>
+                  Laptops with empty code editors or firmware templates (no prewritten code)
+                </li>
               </ul>
 
-              <p className="text-[#E2DCD0] text-base mt-4">
-                Final hardware problem statements will be released <strong>3 days before the event</strong> to allow planning (no pre-building).
+              {/* 2.3 Final Round Theme Release */}
+              <p className="text-[#E2DCD0] font-medium mt-4 mb-2 text-base">
+                <strong>3. Final Round Theme Release</strong>
               </p>
+
+              <ul className="list-disc list-inside text-[#E2DCD0] space-y-2 pl-4 text-base">
+                <li>
+                  Hardware track final problem statements will be given 3 days before the event.
+                </li>
+                <li>
+                  Gives time to plan and buy components, but no pre-building.
+                </li>
+              </ul>
+
+              {/* 2.4 Final Evaluation */}
+              <p className="text-[#E2DCD0] font-medium mt-4 mb-2 text-base">
+                <strong>4. Final Round Evaluation Criteria</strong>
+              </p>
+
+              <ul className="list-disc list-inside text-[#E2DCD0] space-y-2 pl-4 text-base">
+                <li>Functionality of the prototype</li>
+                <li>Electronics + mechanical implementation</li>
+                <li>Robustness & practicality</li>
+                <li>Innovation in hardware design</li>
+              </ul>
             </div>
+
           </section>
 
           {/* Shortlisting Process */}
@@ -180,8 +253,23 @@ export default function Guidelines() {
               <li>Teams attempting to use pre-built hardware projects will be instantly disqualified.</li>
             </ul>
             <p className="text-[#E2DCD0] text-base mt-4">
-              For assistance, contact us at <span className="text-[#d71015] font-medium">7907214758</span> or <span className="text-[#d71015] font-medium">9995353403</span>.
+              For assistance, contact us at{" "}
+              <a
+                href="tel:7907214758"
+                className="text-[#d71015] font-medium hover:underline"
+              >
+                7907214758 (Gayathri M S)
+              </a>{" "}
+              or{" "}
+              <a
+                href="tel:9995353403"
+                className="text-[#d71015] font-medium hover:underline"
+              >
+                9995353403 (Basil Mathews Biju)
+              </a>
+              .
             </p>
+
           </section>
 
           {/* Attached Template */}
@@ -193,7 +281,7 @@ export default function Guidelines() {
               rel="noopener noreferrer"
               className="cursor-pointer text-white font-bold text-[14px] px-5 h-[3em] text-center bg-[#d71015] rounded-3xl active:scale-90 transition-all duration-300  ease-in-out"
             >
-             <a  href="https://docs.google.com/presentation/d/1IhTA9tm0pbXhKs6XwfbZoFKESNgZ7jkPCbQ5c8uy0EU/edit?usp=sharing">
+             <a  href="/Pegasus4_Template.pptx" download>
              Download Template
             </a>
             </button>
