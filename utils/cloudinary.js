@@ -1,4 +1,9 @@
 export async function uploadToCloudinaryUnsigned(file, { folder } = {}) {
+  console.log(
+    "Cloudinary ENV CHECK →",
+    process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+    process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET
+  );
   if (!file) throw new Error("No file provided");
 
   const cloudName = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME;
