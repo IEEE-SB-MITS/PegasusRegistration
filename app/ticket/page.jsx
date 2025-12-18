@@ -91,14 +91,12 @@ const Ticket = () => {
               {/* <InfoItem label="FOOD PREFERENCE" value={teamLeader.foodPref} /> */}
               
               <div className="mt-6 flex md:flex-row flex-col space-y-2 md:space-y-0 justify-between items-center">
-                <a
-                  href={abstractPdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => window.print()}
                   className="px-4 py-2 bg-[#d71015] text-white text-xs hover:bg-[#b60d12] transition-colors"
                 >
-                  DOWNLOAD ABSTRACT PDF
-                </a>
+                  DOWNLOAD TICKET
+                </button>
                 <p className="text-sm text-[#d71015]">No.{ticketNumber}</p>
               </div>
               

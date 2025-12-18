@@ -47,6 +47,8 @@ const RegisterForm = () => {
     lname: "",
     branch: "",
     clg: "",
+    github: "",           
+    achievements: "", 
     foodPref: "veg",
     phone: "",
     email: "",
@@ -266,6 +268,33 @@ const RegisterForm = () => {
             required
           />
         </div>
+        <div>
+          <label className="block text-[#E2DCD0] mb-2">
+            GitHub Profile Link
+          </label>
+          <input
+            type="url"
+            name="github"
+            value={data.github}
+            onChange={onChange}
+            placeholder="https://github.com/username"
+            className="w-fit p-2 bg-transparent border-b-2 border-[#666262] rounded text-[#E2DCD0]"
+          />
+        </div>
+        <div >
+          <label className="block text-[#E2DCD0] mb-2">
+            Previous Achievements
+          </label>
+          <input
+            name="achievements"
+            value={data.achievements || ""}
+            onChange={onChange}
+            placeholder="Hackathons, awards etc."
+            className="w-fit p-2 bg-transparent border-b-2 border-[#666262] rounded text-[#E2DCD0]"
+          />
+        </div>
+
+
         <div>
           <label className="block text-[#E2DCD0] mb-2">
             Food Preference<span className="text-red-600">*</span>
