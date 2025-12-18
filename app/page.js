@@ -57,7 +57,7 @@ export default function Guidelines() {
             <ul className="list-disc list-inside text-[#E2DCD0] text-base space-y-2">
               <li>All teams must use the given 6-slide PPT template.</li>
               <li>Extra slides result in direct disqualification.</li>
-              <li>Submission Deadline: <strong className="text-[#d71015]">31 December 2025</strong>.</li>
+              <li>Submission Deadline: <strong className="text-[#d71015]">9 January 2026</strong>.</li>
               <li>File Naming: <code className="px-1 rounded">Team_Name.pptx</code>.</li>
             </ul>
           </section>
